@@ -85,7 +85,7 @@ Class | Method | HTTP request | Description
 *OpenapiClient::DefaultApi* | [**create_new_model**](docs/DefaultApi.md#create_new_model) | **PUT** /models | Create New Model
 *OpenapiClient::DefaultApi* | [**delete_model**](docs/DefaultApi.md#delete_model) | **DELETE** /models | Delete Model
 *OpenapiClient::DefaultApi* | [**get_models_list**](docs/DefaultApi.md#get_models_list) | **GET** /models | Get Models List
-*OpenapiClient::DefaultApi* | [**index_by_image_url**](docs/DefaultApi.md#index_by_image_url) | **GET** /index_by_image_url | Index by Using Image URL
+*OpenapiClient::DefaultApi* | [**index_by_image_url**](docs/DefaultApi.md#index_by_image_url) | **POST** /index_by_image_url | Index by Using Image URL
 *OpenapiClient::DefaultApi* | [**index_image**](docs/DefaultApi.md#index_image) | **POST** /index_image | Index Local Image
 *OpenapiClient::DefaultApi* | [**tag_image_by_url**](docs/DefaultApi.md#tag_image_by_url) | **GET** /predict_by_image_url | Tag Image by Using Image Url
 *OpenapiClient::DefaultApi* | [**tag_local_image**](docs/DefaultApi.md#tag_local_image) | **POST** /predict | Predict by Image
@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 
  - [OpenapiClient::InlineObject](docs/InlineObject.md)
  - [OpenapiClient::InlineObject1](docs/InlineObject1.md)
+ - [OpenapiClient::InlineObject2](docs/InlineObject2.md)
 
 
 ## Documentation for Authorization

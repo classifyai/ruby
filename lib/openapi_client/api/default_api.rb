@@ -199,54 +199,46 @@ module OpenapiClient
 
     # Index by Using Image URL
     # Index by Using Image URL
-    # @param model_id [String] Model ID
-    # @param image_url [String] Image URL
+    # @param inline_object [InlineObject] 
     # @param [Hash] opts the optional parameters
-    # @return [String]
-    def index_by_image_url(model_id, image_url, opts = {})
-      data, _status_code, _headers = index_by_image_url_with_http_info(model_id, image_url, opts)
-      data
+    # @return [nil]
+    def index_by_image_url(inline_object, opts = {})
+      index_by_image_url_with_http_info(inline_object, opts)
+      nil
     end
 
     # Index by Using Image URL
     # Index by Using Image URL
-    # @param model_id [String] Model ID
-    # @param image_url [String] Image URL
+    # @param inline_object [InlineObject] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def index_by_image_url_with_http_info(model_id, image_url, opts = {})
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def index_by_image_url_with_http_info(inline_object, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.index_by_image_url ...'
       end
-      # verify the required parameter 'model_id' is set
-      if @api_client.config.client_side_validation && model_id.nil?
-        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.index_by_image_url"
-      end
-      # verify the required parameter 'image_url' is set
-      if @api_client.config.client_side_validation && image_url.nil?
-        fail ArgumentError, "Missing the required parameter 'image_url' when calling DefaultApi.index_by_image_url"
+      # verify the required parameter 'inline_object' is set
+      if @api_client.config.client_side_validation && inline_object.nil?
+        fail ArgumentError, "Missing the required parameter 'inline_object' when calling DefaultApi.index_by_image_url"
       end
       # resource path
       local_var_path = '/index_by_image_url'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'model_id'] = model_id
-      query_params[:'image_url'] = image_url
 
       # header parameters
       header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body] || @api_client.object_to_http_body(inline_object) 
 
       # return_type
-      return_type = opts[:return_type] || 'String' 
+      return_type = opts[:return_type] 
 
       # auth_names
       auth_names = opts[:auth_names] || ['x-api-key']
@@ -260,7 +252,7 @@ module OpenapiClient
         :return_type => return_type
       )
 
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#index_by_image_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -269,35 +261,32 @@ module OpenapiClient
 
     # Index Local Image
     # Index Local Image
-    # @param model_id [String] Model ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :model_id 
+    # @option opts [String] :tag 
     # @option opts [File] :file 
     # @return [String]
-    def index_image(model_id, opts = {})
-      data, _status_code, _headers = index_image_with_http_info(model_id, opts)
+    def index_image(opts = {})
+      data, _status_code, _headers = index_image_with_http_info(opts)
       data
     end
 
     # Index Local Image
     # Index Local Image
-    # @param model_id [String] Model ID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :model_id 
+    # @option opts [String] :tag 
     # @option opts [File] :file 
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def index_image_with_http_info(model_id, opts = {})
+    def index_image_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.index_image ...'
-      end
-      # verify the required parameter 'model_id' is set
-      if @api_client.config.client_side_validation && model_id.nil?
-        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.index_image"
       end
       # resource path
       local_var_path = '/index_image'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'model_id'] = model_id
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -308,6 +297,8 @@ module OpenapiClient
 
       # form parameters
       form_params = opts[:form_params] || {}
+      form_params['model_id'] = opts[:'model_id'] if !opts[:'model_id'].nil?
+      form_params['tag'] = opts[:'tag'] if !opts[:'tag'].nil?
       form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
 
       # http body (model)
@@ -407,35 +398,30 @@ module OpenapiClient
 
     # Predict by Image
     # Send a local image to tag
-    # @param model_id [String] Type your trained model id to predict. You get your model&#39;s id from Classify Dashboard.
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file 
+    # @option opts [String] :model_id 
     # @return [nil]
-    def tag_local_image(model_id, opts = {})
-      tag_local_image_with_http_info(model_id, opts)
+    def tag_local_image(opts = {})
+      tag_local_image_with_http_info(opts)
       nil
     end
 
     # Predict by Image
     # Send a local image to tag
-    # @param model_id [String] Type your trained model id to predict. You get your model&#39;s id from Classify Dashboard.
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file 
+    # @option opts [String] :model_id 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def tag_local_image_with_http_info(model_id, opts = {})
+    def tag_local_image_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.tag_local_image ...'
-      end
-      # verify the required parameter 'model_id' is set
-      if @api_client.config.client_side_validation && model_id.nil?
-        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.tag_local_image"
       end
       # resource path
       local_var_path = '/predict'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'model_id'] = model_id
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -447,6 +433,7 @@ module OpenapiClient
       # form parameters
       form_params = opts[:form_params] || {}
       form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+      form_params['model_id'] = opts[:'model_id'] if !opts[:'model_id'].nil?
 
       # http body (model)
       post_body = opts[:body] 

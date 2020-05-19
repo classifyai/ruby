@@ -14,11 +14,17 @@ require 'date'
 
 module OpenapiClient
   class InlineObject1
+    attr_accessor :model_id
+
+    attr_accessor :tag
+
     attr_accessor :file
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'model_id' => :'model_id',
+        :'tag' => :'tag',
         :'file' => :'file'
       }
     end
@@ -26,6 +32,8 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'model_id' => :'String',
+        :'tag' => :'String',
         :'file' => :'File'
       }
     end
@@ -51,6 +59,14 @@ module OpenapiClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'model_id')
+        self.model_id = attributes[:'model_id']
+      end
+
+      if attributes.key?(:'tag')
+        self.tag = attributes[:'tag']
+      end
+
       if attributes.key?(:'file')
         self.file = attributes[:'file']
       end
@@ -74,6 +90,8 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          model_id == o.model_id &&
+          tag == o.tag &&
           file == o.file
     end
 
@@ -86,7 +104,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [file].hash
+      [model_id, tag, file].hash
     end
 
     # Builds the object from hash

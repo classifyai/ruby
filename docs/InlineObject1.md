@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**model_id** | **String** |  | [optional] 
+**tag** | **String** |  | [optional] 
 **file** | **File** |  | [optional] 
 
 ## Code Sample
@@ -11,7 +13,9 @@ Name | Type | Description | Notes
 ```ruby
 require 'OpenapiClient'
 
-instance = OpenapiClient::InlineObject1.new(file: null)
+instance = OpenapiClient::InlineObject1.new(model_id: null,
+                                 tag: null,
+                                 file: null)
 ```
 
 

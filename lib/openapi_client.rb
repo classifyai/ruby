@@ -19,6 +19,7 @@ require 'openapi_client/configuration'
 # Models
 require 'openapi_client/models/inline_object'
 require 'openapi_client/models/inline_object1'
+require 'openapi_client/models/inline_object2'
 
 # APIs
 require 'openapi_client/api/default_api'

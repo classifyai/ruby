@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**create_new_model**](DefaultApi.md#create_new_model) | **PUT** /models | Create New Model
 [**delete_model**](DefaultApi.md#delete_model) | **DELETE** /models | Delete Model
 [**get_models_list**](DefaultApi.md#get_models_list) | **GET** /models | Get Models List
-[**index_by_image_url**](DefaultApi.md#index_by_image_url) | **GET** /index_by_image_url | Index by Using Image URL
+[**index_by_image_url**](DefaultApi.md#index_by_image_url) | **POST** /index_by_image_url | Index by Using Image URL
 [**index_image**](DefaultApi.md#index_image) | **POST** /index_image | Index Local Image
 [**tag_image_by_url**](DefaultApi.md#tag_image_by_url) | **GET** /predict_by_image_url | Tag Image by Using Image Url
 [**tag_local_image**](DefaultApi.md#tag_local_image) | **POST** /predict | Predict by Image
@@ -173,7 +173,7 @@ This endpoint does not need any parameter.
 
 ## index_by_image_url
 
-> String index_by_image_url(model_id, image_url)
+> index_by_image_url(inline_object)
 
 Index by Using Image URL
 
@@ -193,13 +193,11 @@ OpenapiClient.configure do |config|
 end
 
 api_instance = OpenapiClient::DefaultApi.new
-model_id = 'model_id_example' # String | Model ID
-image_url = 'image_url_example' # String | Image URL
+inline_object = OpenapiClient::InlineObject.new # InlineObject | 
 
 begin
   #Index by Using Image URL
-  result = api_instance.index_by_image_url(model_id, image_url)
-  p result
+  api_instance.index_by_image_url(inline_object)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling DefaultApi->index_by_image_url: #{e}"
 end
@@ -210,12 +208,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **String**| Model ID | 
- **image_url** | **String**| Image URL | 
+ **inline_object** | [**InlineObject**](InlineObject.md)|  | 
 
 ### Return type
 
-**String**
+nil (empty response body)
 
 ### Authorization
 
@@ -223,13 +220,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 
 ## index_image
 
-> String index_image(model_id, opts)
+> String index_image(opts)
 
 Index Local Image
 
@@ -249,14 +246,15 @@ OpenapiClient.configure do |config|
 end
 
 api_instance = OpenapiClient::DefaultApi.new
-model_id = 'model_id_example' # String | Model ID
 opts = {
+  model_id: 'model_id_example', # String | 
+  tag: 'tag_example', # String | 
   file: File.new('/path/to/file') # File | 
 }
 
 begin
   #Index Local Image
-  result = api_instance.index_image(model_id, opts)
+  result = api_instance.index_image(opts)
   p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling DefaultApi->index_image: #{e}"
@@ -268,7 +266,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **String**| Model ID | 
+ **model_id** | **String**|  | [optional] 
+ **tag** | **String**|  | [optional] 
  **file** | **File**|  | [optional] 
 
 ### Return type
@@ -342,7 +341,7 @@ nil (empty response body)
 
 ## tag_local_image
 
-> tag_local_image(model_id, opts)
+> tag_local_image(opts)
 
 Predict by Image
 
@@ -362,14 +361,14 @@ OpenapiClient.configure do |config|
 end
 
 api_instance = OpenapiClient::DefaultApi.new
-model_id = 'model_id_example' # String | Type your trained model id to predict. You get your model's id from Classify Dashboard.
 opts = {
-  file: File.new('/path/to/file') # File | 
+  file: File.new('/path/to/file'), # File | 
+  model_id: 'model_id_example' # String | 
 }
 
 begin
   #Predict by Image
-  api_instance.tag_local_image(model_id, opts)
+  api_instance.tag_local_image(opts)
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling DefaultApi->tag_local_image: #{e}"
 end
@@ -380,8 +379,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_id** | **String**| Type your trained model id to predict. You get your model&#39;s id from Classify Dashboard. | 
  **file** | **File**|  | [optional] 
+ **model_id** | **String**|  | [optional] 
 
 ### Return type
 

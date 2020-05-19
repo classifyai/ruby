@@ -4,14 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**file** | **File** |  | [optional] 
+**image_url** | **String** |  | 
+**tag** | **String** |  | 
+**model_id** | **String** |  | 
 
 ## Code Sample
 
 ```ruby
 require 'OpenapiClient'
 
-instance = OpenapiClient::InlineObject.new(file: null)
+instance = OpenapiClient::InlineObject.new(image_url: null,
+                                 tag: null,
+                                 model_id: null)
 ```
 
 

@@ -13,18 +13,15 @@ OpenAPI Generator version: 4.3.1
 require 'date'
 
 module OpenapiClient
-  class InlineObject
-    attr_accessor :image_url
-
-    attr_accessor :tag
+  class InlineObject2
+    attr_accessor :file
 
     attr_accessor :model_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'image_url' => :'image_url',
-        :'tag' => :'tag',
+        :'file' => :'file',
         :'model_id' => :'model_id'
       }
     end
@@ -32,8 +29,7 @@ module OpenapiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'image_url' => :'String',
-        :'tag' => :'String',
+        :'file' => :'File',
         :'model_id' => :'String'
       }
     end
@@ -48,23 +44,19 @@ module OpenapiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::InlineObject` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OpenapiClient::InlineObject2` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::InlineObject`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OpenapiClient::InlineObject2`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'image_url')
-        self.image_url = attributes[:'image_url']
-      end
-
-      if attributes.key?(:'tag')
-        self.tag = attributes[:'tag']
+      if attributes.key?(:'file')
+        self.file = attributes[:'file']
       end
 
       if attributes.key?(:'model_id')
@@ -76,27 +68,12 @@ module OpenapiClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @image_url.nil?
-        invalid_properties.push('invalid value for "image_url", image_url cannot be nil.')
-      end
-
-      if @tag.nil?
-        invalid_properties.push('invalid value for "tag", tag cannot be nil.')
-      end
-
-      if @model_id.nil?
-        invalid_properties.push('invalid value for "model_id", model_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @image_url.nil?
-      return false if @tag.nil?
-      return false if @model_id.nil?
       true
     end
 
@@ -105,8 +82,7 @@ module OpenapiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          image_url == o.image_url &&
-          tag == o.tag &&
+          file == o.file &&
           model_id == o.model_id
     end
 
@@ -119,7 +95,7 @@ module OpenapiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [image_url, tag, model_id].hash
+      [file, model_id].hash
     end
 
     # Builds the object from hash

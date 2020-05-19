@@ -70,10 +70,9 @@ describe 'DefaultApi' do
   # unit tests for index_by_image_url
   # Index by Using Image URL
   # Index by Using Image URL
-  # @param model_id Model ID
-  # @param image_url Image URL
+  # @param inline_object 
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @return [nil]
   describe 'index_by_image_url test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -83,8 +82,9 @@ describe 'DefaultApi' do
   # unit tests for index_image
   # Index Local Image
   # Index Local Image
-  # @param model_id Model ID
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :model_id 
+  # @option opts [String] :tag 
   # @option opts [File] :file 
   # @return [String]
   describe 'index_image test' do
@@ -109,9 +109,9 @@ describe 'DefaultApi' do
   # unit tests for tag_local_image
   # Predict by Image
   # Send a local image to tag
-  # @param model_id Type your trained model id to predict. You get your model&#39;s id from Classify Dashboard.
   # @param [Hash] opts the optional parameters
   # @option opts [File] :file 
+  # @option opts [String] :model_id 
   # @return [nil]
   describe 'tag_local_image test' do
     it 'should work' do
