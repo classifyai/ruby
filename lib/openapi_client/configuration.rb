@@ -207,8 +207,8 @@ module OpenapiClient
     def server_settings
       [
         {
-          url: "/",
-          description: "No description provided",
+          url: "https://api.classifyai.com",
+          description: "Classify API",
         }
       ]
     end

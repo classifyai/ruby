@@ -60,8 +60,34 @@ describe 'DefaultApi' do
   # Get Models List
   # Get the list of of models created 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'get_models_list test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for index_by_image_url
+  # Index by Using Image URL
+  # Index by Using Image URL
+  # @param model_id Model ID
+  # @param image_url Image URL
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'index_by_image_url test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for index_image
+  # Index Local Image
+  # Index Local Image
+  # @param model_id Model ID
+  # @param [Hash] opts the optional parameters
+  # @option opts [File] :file 
+  # @return [String]
+  describe 'index_image test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

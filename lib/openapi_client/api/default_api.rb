@@ -144,16 +144,16 @@ module OpenapiClient
     # Get Models List
     # Get the list of of models created 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def get_models_list(opts = {})
-      get_models_list_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_models_list_with_http_info(opts)
+      data
     end
 
     # Get Models List
     # Get the list of of models created 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def get_models_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_models_list ...'
@@ -176,7 +176,7 @@ module OpenapiClient
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'String' 
 
       # auth_names
       auth_names = opts[:auth_names] || ['x-api-key']
@@ -193,6 +193,144 @@ module OpenapiClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_models_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Index by Using Image URL
+    # Index by Using Image URL
+    # @param model_id [String] Model ID
+    # @param image_url [String] Image URL
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def index_by_image_url(model_id, image_url, opts = {})
+      data, _status_code, _headers = index_by_image_url_with_http_info(model_id, image_url, opts)
+      data
+    end
+
+    # Index by Using Image URL
+    # Index by Using Image URL
+    # @param model_id [String] Model ID
+    # @param image_url [String] Image URL
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def index_by_image_url_with_http_info(model_id, image_url, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.index_by_image_url ...'
+      end
+      # verify the required parameter 'model_id' is set
+      if @api_client.config.client_side_validation && model_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.index_by_image_url"
+      end
+      # verify the required parameter 'image_url' is set
+      if @api_client.config.client_side_validation && image_url.nil?
+        fail ArgumentError, "Missing the required parameter 'image_url' when calling DefaultApi.index_by_image_url"
+      end
+      # resource path
+      local_var_path = '/index_by_image_url'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'model_id'] = model_id
+      query_params[:'image_url'] = image_url
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'String' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || ['x-api-key']
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#index_by_image_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Index Local Image
+    # Index Local Image
+    # @param model_id [String] Model ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file 
+    # @return [String]
+    def index_image(model_id, opts = {})
+      data, _status_code, _headers = index_image_with_http_info(model_id, opts)
+      data
+    end
+
+    # Index Local Image
+    # Index Local Image
+    # @param model_id [String] Model ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file 
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def index_image_with_http_info(model_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.index_image ...'
+      end
+      # verify the required parameter 'model_id' is set
+      if @api_client.config.client_side_validation && model_id.nil?
+        fail ArgumentError, "Missing the required parameter 'model_id' when calling DefaultApi.index_image"
+      end
+      # resource path
+      local_var_path = '/index_image'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'model_id'] = model_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'String' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || ['x-api-key']
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#index_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

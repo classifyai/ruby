@@ -1,12 +1,14 @@
 # OpenapiClient::DefaultApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.classifyai.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_new_model**](DefaultApi.md#create_new_model) | **PUT** /models | Create New Model
 [**delete_model**](DefaultApi.md#delete_model) | **DELETE** /models | Delete Model
 [**get_models_list**](DefaultApi.md#get_models_list) | **GET** /models | Get Models List
+[**index_by_image_url**](DefaultApi.md#index_by_image_url) | **GET** /index_by_image_url | Index by Using Image URL
+[**index_image**](DefaultApi.md#index_image) | **POST** /index_image | Index Local Image
 [**tag_image_by_url**](DefaultApi.md#tag_image_by_url) | **GET** /predict_by_image_url | Tag Image by Using Image Url
 [**tag_local_image**](DefaultApi.md#tag_local_image) | **POST** /predict | Predict by Image
 [**update_model**](DefaultApi.md#update_model) | **POST** /models | Update Model
@@ -121,7 +123,7 @@ nil (empty response body)
 
 ## get_models_list
 
-> get_models_list
+> String get_models_list
 
 Get Models List
 
@@ -144,7 +146,8 @@ api_instance = OpenapiClient::DefaultApi.new
 
 begin
   #Get Models List
-  api_instance.get_models_list
+  result = api_instance.get_models_list
+  p result
 rescue OpenapiClient::ApiError => e
   puts "Exception when calling DefaultApi->get_models_list: #{e}"
 end
@@ -156,7 +159,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -165,6 +168,120 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## index_by_image_url
+
+> String index_by_image_url(model_id, image_url)
+
+Index by Using Image URL
+
+Index by Using Image URL
+
+### Example
+
+```ruby
+# load the gem
+require 'openapi_client'
+# setup authorization
+OpenapiClient.configure do |config|
+  # Configure API key authorization: x-api-key
+  config.api_key['x-api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-api-key'] = 'Bearer'
+end
+
+api_instance = OpenapiClient::DefaultApi.new
+model_id = 'model_id_example' # String | Model ID
+image_url = 'image_url_example' # String | Image URL
+
+begin
+  #Index by Using Image URL
+  result = api_instance.index_by_image_url(model_id, image_url)
+  p result
+rescue OpenapiClient::ApiError => e
+  puts "Exception when calling DefaultApi->index_by_image_url: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_id** | **String**| Model ID | 
+ **image_url** | **String**| Image URL | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## index_image
+
+> String index_image(model_id, opts)
+
+Index Local Image
+
+Index Local Image
+
+### Example
+
+```ruby
+# load the gem
+require 'openapi_client'
+# setup authorization
+OpenapiClient.configure do |config|
+  # Configure API key authorization: x-api-key
+  config.api_key['x-api-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-api-key'] = 'Bearer'
+end
+
+api_instance = OpenapiClient::DefaultApi.new
+model_id = 'model_id_example' # String | Model ID
+opts = {
+  file: File.new('/path/to/file') # File | 
+}
+
+begin
+  #Index Local Image
+  result = api_instance.index_image(model_id, opts)
+  p result
+rescue OpenapiClient::ApiError => e
+  puts "Exception when calling DefaultApi->index_image: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **model_id** | **String**| Model ID | 
+ **file** | **File**|  | [optional] 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[x-api-key](../README.md#x-api-key)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 
